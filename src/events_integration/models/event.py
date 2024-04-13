@@ -21,7 +21,8 @@ class BaseEvent(TimeAuditedModel):
 class Event(BaseEvent):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
-    event_datetime = models.DateTimeField(null=False, blank=False)
+    event_start_datetime = models.DateTimeField(null=False, blank=False, db_index=True)
+    event_end_datetime = models.DateTimeField(null=False, blank=False, db_index=True)
     sell_from = models.DateTimeField(null=False, blank=False)
     sell_to = models.DateTimeField(null=False, blank=False)
 

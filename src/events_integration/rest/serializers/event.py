@@ -17,16 +17,16 @@ class EventSerializer(serializers.ModelSerializer):
         return obj.uuid
 
     def get_start_date(self, obj):
-        return obj.event_datetime.date().isoformat()
+        return obj.event_start_datetime.date().isoformat()
 
     def get_start_time(self, obj):
-        return obj.event_datetime.time().isoformat()
+        return obj.event_start_datetime.time().isoformat()
 
     def get_end_date(self, obj):
-        return None
+        return obj.event_end_datetime.date().isoformat()
 
     def get_end_time(self, obj):
-        return None
+        return obj.event_end_datetime.time().isoformat()
 
     def get_min_price(self, obj):
         return obj.zones.aggregate(min_price=Min('price'))['min_price']
